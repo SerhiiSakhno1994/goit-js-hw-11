@@ -16,6 +16,7 @@ const refs = {
     clearBtn: document.querySelector('.clear-btn'),
     gallery: document.querySelector('.gallery'),
     card: document.querySelector('.photo-card'),
+    sentinel: document.querySelector('#sentinel'),
 };
 
 const URL = 'https://pixabay.com/api/';
@@ -44,11 +45,12 @@ function onCardClick(evt) {
 
   gallery.open('.gallery');
 }
+let inputValue;
 
 async function onFormSubmit(e) {
   e.preventDefault();
   searchOption.params.page = 0;
-  const inputValue = e.currentTarget.searchQuery.value.trim();
+   inputValue = e.currentTarget.searchQuery.value.trim();
   if (!inputValue.length) {
     Notify.failure('Please enter a valid query text');
     return;
@@ -133,3 +135,6 @@ function makeMarkUp({ data }) {
 
   refs.loadMoreBtn.classList.remove('visually-hidden');
 }
+
+
+
